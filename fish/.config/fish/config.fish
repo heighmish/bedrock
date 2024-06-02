@@ -1,4 +1,3 @@
-starship init fish | source
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 
@@ -21,14 +20,6 @@ function cat
     end
 end
 
-function cd
-    if type -q zoxide
-        zoxide $argv
-    else
-        builtin cd $argv
-    end
-end
-
 # Ocaml
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source /Users/hpro/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
@@ -37,3 +28,6 @@ eval $(opam config env)
 # Git
 alias gs="git status"
 alias lg="lazygit"
+
+starship init fish | source
+zoxide init --cmd cd fish | source
