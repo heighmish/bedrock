@@ -3,7 +3,37 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias ls='eza --icons -F -H --group-directories-first --git -1'
-alias cat='bat'
 
+# Unix tool alias
+function ls
+    if type -q eza
+        eza $argv
+    else
+        command ls $argv
+    end
+end
+
+function cat
+    if type -q bat
+        bat $argv
+    else
+        command cat $argv
+    end
+end
+
+function cd
+    if type -q zoxide
+        zoxide $argv
+    else
+        builtin cd $argv
+    end
+end
+
+# Ocaml
 eval "$(/opt/homebrew/bin/brew shellenv)"
+source /Users/hpro/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+eval $(opam config env)
+
+# Git
+alias gs="git status"
+alias lg="lazygit"
