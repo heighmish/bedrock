@@ -6,7 +6,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Unix tool alias
 function ls
     if type -q eza
-        eza $argv
+        eza --icons -F -H --group-directories-first --git -1 $argv
     else
         command ls $argv
     end
