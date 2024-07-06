@@ -1,8 +1,6 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 # Unix tool alias
 function ls
     if type -q eza
